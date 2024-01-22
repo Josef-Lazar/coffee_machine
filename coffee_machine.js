@@ -1,7 +1,16 @@
+/* You may need to install a package for taking user input.
+   To do this, following these steps:
+   1.) open terminal
+   2.) write: "npm update", and press enter
+   3.) write: "npm install https://github.com/hyperskill/sync-input/archive/v1.tar.gz", and press enter
+   4.) write: "npm install", and press enter
+   5.) close the terminal and run this program again
+   If you still have issues try debugging
+*/
 // Use "input()" to input a line from the user
 // Use "input(str)" to print some text before requesting input
 // You will need this in the following stages
-const input = require('sync-input')
+const input = require('sync-input');
 
 let machine = {
 	water: 400,
@@ -77,10 +86,10 @@ function missingResourcesNotification(requiredResources) {
 
 while(true) {
 	console.log();
-	let action = input("Write action (buy, fill, take, remaining, exit):");
+	let action = input("Write action (buy, fill, take, remaining, exit):\n");
 
 	if (action == "buy") {
-		let coffeeChoice = input("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:");
+		let coffeeChoice = input("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:\n");
 		if (coffeeChoice == 1) {
 			if (canMakeCoffee(espressoResources)) {
 				console.log("I have enough resources, making you a coffee!");
@@ -106,15 +115,14 @@ while(true) {
 			continue;
 		}
 	} else if (action == "fill") {
-		machine.water += parseInt(input("Write how many ml of water you want to add:"));
-		machine.oatMilk += parseInt(input("Write how many ml of oat milk you want to add:"));
-		machine.coffeeBeans += parseInt(input("Write how many grams of coffee beans you want to add:"));
-		machine.disposableCups += parseInt(input("Write how many disposable cups you want to add:"));
+		machine.water += parseInt(input("Write how many ml of water you want to add:\n"));
+		machine.oatMilk += parseInt(input("Write how many ml of oat milk you want to add:\n"));
+		machine.coffeeBeans += parseInt(input("Write how many grams of coffee beans you want to add:\n"));
+		machine.disposableCups += parseInt(input("Write how many disposable cups you want to add:\n"));
 	} else if (action == "take") {
 		console.log("I gave you \$" + machine.money);
 		machine.money = 0;
 	} else if (action == "remaining") {
-		console.log("\n");
 		readCoffeeMachineStatus();
 	} else if (action == "exit") {
 		break;
